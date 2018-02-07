@@ -9,7 +9,7 @@
     <aside class="aside" :class="{opened: isOpen, visible: isVisible}" @click="toggle()">
       <div class="aside-content">
         <div class="aside-content-header">
-          <span><img src="https://placeholdit.co//i/100x100" alt="Avatar"></span>
+          <span><img src="./assets/logo.png" alt="Avatar"></span>
         </div>
         <ul>
           <li><span>首页</span></li>
@@ -145,11 +145,18 @@ export default {
   background: var(--mainColor);
 }
 .aside-content-header span {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 2rem;
   height: 2rem;
   border-radius: 1rem;
   overflow: hidden;
+}
+.aside-content-header span img {
+  display: block;
+  width: 2.2rem;
+  height: 2.2rem;
 }
 .aside-content ul {
   overflow-y: auto;
@@ -158,11 +165,12 @@ export default {
 .aside-content ul li {
   height: 1.25rem;
   line-height: 1.25rem;
-  padding-left: .2rem;
+  padding-left: .5rem;
   font-size: .4rem;
 }
 .main {
   padding-top: var(--headerHeight);
   height: 100%;
+  width: 100%;
 }
 </style>

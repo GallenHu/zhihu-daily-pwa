@@ -3,7 +3,16 @@ var dataCacheName = 'articleData-v1';
 var filesToCache = [ // prod
   // './',
   '../index.html',
-  './fiexible.js'
+  './fiexible.js',
+  './css/app.73e223feb2c96c343912795de0bca320.css',
+  './css/app.73e223feb2c96c343912795de0bca320.css.map',
+  './img/logo.ff40a13.png',
+  './js/app.3c63f24344f9426a4fe4.js',
+  './js/app.3c63f24344f9426a4fe4.js.map',
+  './js/manifest.e370f10f2255b3022cb9.js',
+  './js/manifest.e370f10f2255b3022cb9.js.map',
+  './js/vendor.60bd9e52f7d6c2bfecc2.js',
+  './js/vendor.60bd9e52f7d6c2bfecc2.js.map'
 ];
 // var filesToCache = [ // dev
 //   '/',

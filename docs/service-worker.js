@@ -1,18 +1,19 @@
+/* eslint-disable */
 var cacheName = 'zhihu-daily-pwa';
 var dataCacheName = 'articleData-v1';
 var filesToCache = [ // prod
-  // './',
-  '../index.html',
-  './fiexible.js',
-  './css/app.73e223feb2c96c343912795de0bca320.css',
-  './css/app.73e223feb2c96c343912795de0bca320.css.map',
-  './img/logo.ff40a13.png',
-  './js/app.3c63f24344f9426a4fe4.js',
-  './js/app.3c63f24344f9426a4fe4.js.map',
-  './js/manifest.e370f10f2255b3022cb9.js',
-  './js/manifest.e370f10f2255b3022cb9.js.map',
-  './js/vendor.60bd9e52f7d6c2bfecc2.js',
-  './js/vendor.60bd9e52f7d6c2bfecc2.js.map'
+  './',
+  './index.html',
+  './static/fiexible.js',
+  './static/css/app.37d0481be65427e3cd5834da839197d1.css',
+  './static/css/app.37d0481be65427e3cd5834da839197d1.css.map',
+  './static/img/logo.ff40a13.png',
+  './static/js/app.04623e7911f5caae2175.js',
+  './static/js/app.04623e7911f5caae2175.js.map',
+  './static/js/manifest.819b2ccb1fe88c99b5f4.js',
+  './static/js/manifest.819b2ccb1fe88c99b5f4.js.map',
+  './static/js/vendor.60bd9e52f7d6c2bfecc2.js',
+  './static/js/vendor.60bd9e52f7d6c2bfecc2.js.map'
 ];
 // var filesToCache = [ // dev
 //   '/',
@@ -27,7 +28,9 @@ self.addEventListener('install', function(e) {
   e.waitUntil(
     caches.open(cacheName).then(function(cache) {
       console.log('[ServiceWorker] Caching app shell');
-      return cache.addAll(filesToCache);
+      return cache.addAll(filesToCache).then(function () {
+        console.log('[ServiceWorker] All cached');
+      });
     })
   );
 });
@@ -39,8 +42,8 @@ self.addEventListener('activate', function(e) {
     caches.keys().then(function (keyList) {
       return Promise.all(keyList.map(function (key) {
         if (key !== cacheName || key !== dataCacheName) {
-          console.log('[ServiceWorker] Removing old cache', key);
-          return caches.delete(key);
+          // console.log('[ServiceWorker] Removing old cache', key);
+          // return caches.delete(key);
         }
       }));
     })

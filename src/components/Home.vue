@@ -32,9 +32,11 @@ export default {
 
           if (res) {
             res.json().then((json) => {
+              // console.log('====================================');
               // console.log(json);
-              this.date = json.data.STORIES.date;
-              this.list = json.data.STORIES.stories;
+              // console.log('====================================');
+              this.date = json.STORIES.date;
+              this.list = json.STORIES.stories;
             });
           }
         });

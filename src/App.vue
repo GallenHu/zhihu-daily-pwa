@@ -45,7 +45,7 @@ export default {
   },
 
   updated() {
-    this.isHome = this.$route.path === '/home';
+    this.isHome = this.$route.path === '/' || this.$route.path === '/home';
   },
 
   methods: {

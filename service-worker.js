@@ -1,9 +1,10 @@
+/* eslint-disable */
 var cacheName = 'zhihu-daily-pwa';
 var dataCacheName = 'articleData-v1';
 var filesToCache = [ // prod
-  // './',
-  '../index.html',
-  './fiexible.js'
+  './',
+  './index.html',
+  './static/fiexible.js'
 ];
 // var filesToCache = [ // dev
 //   '/',
@@ -18,7 +19,9 @@ self.addEventListener('install', function(e) {
   e.waitUntil(
     caches.open(cacheName).then(function(cache) {
       console.log('[ServiceWorker] Caching app shell');
-      return cache.addAll(filesToCache);
+      return cache.addAll(filesToCache).then(function () {
+        console.log('[ServiceWorker] All cached');
+      });
     })
   );
 });
@@ -30,8 +33,9 @@ self.addEventListener('activate', function(e) {
     caches.keys().then(function (keyList) {
       return Promise.all(keyList.map(function (key) {
         if (key !== cacheName || key !== dataCacheName) {
-          console.log('[ServiceWorker] Removing old cache', key);
-          return caches.delete(key);
+          // FIXME 添加删除缓存后，导致缓存始终无法存下来
+          // console.log('[ServiceWorker] Removing old cache', key);
+          // return caches.delete(key);
         }
       }));
     })

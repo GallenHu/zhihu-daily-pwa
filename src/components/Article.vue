@@ -38,10 +38,10 @@ export default {
           if (res) {
             res.json().then((json) => {
               // console.log(json);
-              this.css = json.data.CONTENTS.css[0];
-              this.image = json.data.CONTENTS.image;
+              this.css = json.CONTENTS.css[0];
+              this.image = json.CONTENTS.image;
               this.image = `https://images.weserv.nl/?url=${this.image.replace('https://', '')}`;
-              this.body = json.data.CONTENTS.body;
+              this.body = json.CONTENTS.body;
             });
           }
         });

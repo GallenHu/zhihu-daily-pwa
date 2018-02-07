@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="referrer" content="never">
-    <link rel="manifest" href="./static/manifest.json">
+    <link rel="shortcut icon" href="./static/favicon.ico">
+    <link rel="manifest" href="./manifest.json">
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -47,7 +48,7 @@
       window.addEventListener('load', function() {
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker
-            .register('./static/service-worker.js')
+            .register('./service-worker.js')
             .then(function() {
               console.log('Service Worker Registered');
             });

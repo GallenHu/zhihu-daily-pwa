@@ -37,7 +37,7 @@ export default {
 
           if (res) {
             res.json().then((json) => {
-              console.log(json);
+              // console.log(json);
               this.css = json.data.CONTENTS.css[0];
               this.image = json.data.CONTENTS.image;
               this.image = `https://images.weserv.nl/?url=${this.image.replace('https://', '')}`;
@@ -69,7 +69,7 @@ export default {
 
       link.type = 'text/css';
       link.rel = 'stylesheet';
-      link.href = fileName;
+      link.href = fileName.replace('http:', 'https:');
 
       $content.appendChild(link);
     },

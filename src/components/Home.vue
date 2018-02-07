@@ -24,8 +24,28 @@ export default {
   },
   methods: {
     fetchArticles() {
+      const url = `https://zhihu-daily.leanapp.cn/api/v1/last-stories`;
+
+      if ('caches' in window) {
+        caches.match(url).then((res) => {
+          console.log(`[Cache] matched with: ${url}`);
+
+          if (res) {
+            res.json().then((json) => {
+              // console.log(json);
+              this.date = json.data.STORIES.date;
+              this.list = json.data.STORIES.stories;
+            });
+          }
+        });
+      }
+
       return api.getLastArticles().then((res) => {
-        this.date = res.data.STORIES && res.data.STORIES.date;
+        const date = res.data.STORIES && res.data.STORIES.date;
+
+        if (date <= this.date) return;
+
+        this.date = date;
         this.list = res.data.STORIES && res.data.STORIES.stories;
       });
     },

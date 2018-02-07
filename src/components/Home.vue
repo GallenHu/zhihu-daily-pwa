@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     fetchArticles() {
-      const url = `https://zhihu-daily.leanapp.cn/api/v1/last-stories`;
+      const url = 'https://zhihu-daily.leanapp.cn/api/v1/last-stories';
 
       if ('caches' in window) {
         caches.match(url).then((res) => {

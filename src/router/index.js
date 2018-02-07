@@ -6,6 +6,7 @@ import Article from '@/components/Article';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/home',
@@ -18,7 +19,8 @@ export default new Router({
     },
     {
       path: '/',
-      redirect: '/home',
+      name: 'Home',
+      component: Home,
     },
   ],
 });

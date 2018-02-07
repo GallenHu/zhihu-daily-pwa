@@ -1,16 +1,16 @@
 var cacheName = 'zhihu-daily-pwa';
 var dataCacheName = 'articleData-v1';
 var filesToCache = [ // prod
-  './',
+  // './',
   '../index.html',
   './fiexible.js',
-  './css/app.dc52ae26f1e820ede5f5fbbb78afa3df.css',
-  './css/app.dc52ae26f1e820ede5f5fbbb78afa3df.css.map',
+  './css/app.280e64f5a77ce653a3b69eec876d9311.css',
+  './css/app.280e64f5a77ce653a3b69eec876d9311.css.map',
   './img/logo.ff40a13.png',
-  './js/app.45bdc6c99155b5cc82bf.js',
-  './js/app.45bdc6c99155b5cc82bf.js.map',
-  './js/manifest.5caa21b15413f51aafbd.js',
-  './js/manifest.5caa21b15413f51aafbd.js.map',
+  './js/app.825a758d02d2da8e36d6.js',
+  './js/app.825a758d02d2da8e36d6.js.map',
+  './js/manifest.746f4c78d2dc2c9f3dd1.js',
+  './js/manifest.746f4c78d2dc2c9f3dd1.js.map',
   './js/vendor.60bd9e52f7d6c2bfecc2.js',
   './js/vendor.60bd9e52f7d6c2bfecc2.js.map'
 ];

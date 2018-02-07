@@ -1,7 +1,7 @@
 var cacheName = 'zhihu-daily-pwa';
 var dataCacheName = 'articleData-v1';
 var filesToCache = [ // prod
-  './',
+  // './',
   '../index.html',
   './fiexible.js'
 ];

@@ -42,7 +42,6 @@ export default {
 
       return api.getLastArticles().then((res) => {
         const date = res.data.STORIES && res.data.STORIES.date;
-
         if (date <= this.date) return;
 
         this.date = date;

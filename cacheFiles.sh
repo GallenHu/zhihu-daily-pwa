@@ -8,6 +8,10 @@ getFiles(){
     done
 }
 
-getFiles './dist/static/css/*'| sed "s/.\/dist\/static\//'.\//"|sed "s/$/',/g"
-getFiles './dist/static/img/*'| sed "s/.\/dist\/static\//'.\//"|sed "s/$/',/g"
-getFiles './dist/static/js/*'| sed "s/.\/dist\/static\//'.\//"|sed "s/$/',/g"
+echo -e "\nCachefiles:\n"
+
+getFiles './docs/static/css/*'| sed "s/.\/docs\/static\//'.\//"|sed "s/$/',/g"
+getFiles './docs/static/img/*'| sed "s/.\/docs\/static\//'.\//"|sed "s/$/',/g"
+getFiles './docs/static/js/*'| sed "s/.\/docs\/static\//'.\//"|sed "s/$/',/g"
+
+echo -e "\nPlease Replace Those Cachefiles Manually.\n"

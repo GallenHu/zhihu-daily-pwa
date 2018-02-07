@@ -8,10 +8,10 @@ var filesToCache = [ // prod
   './static/css/app.37d0481be65427e3cd5834da839197d1.css',
   './static/css/app.37d0481be65427e3cd5834da839197d1.css.map',
   './static/img/logo.ff40a13.png',
-  './static/js/app.04623e7911f5caae2175.js',
-  './static/js/app.04623e7911f5caae2175.js.map',
-  './static/js/manifest.819b2ccb1fe88c99b5f4.js',
-  './static/js/manifest.819b2ccb1fe88c99b5f4.js.map',
+  './static/js/app.a72898defe425d1b6afc.js',
+  './static/js/app.a72898defe425d1b6afc.js.map',
+  './static/js/manifest.700d26c2c6380b89a2b0.js',
+  './static/js/manifest.700d26c2c6380b89a2b0.js.map',
   './static/js/vendor.60bd9e52f7d6c2bfecc2.js',
   './static/js/vendor.60bd9e52f7d6c2bfecc2.js.map'
 ];
@@ -42,6 +42,7 @@ self.addEventListener('activate', function(e) {
     caches.keys().then(function (keyList) {
       return Promise.all(keyList.map(function (key) {
         if (key !== cacheName || key !== dataCacheName) {
+          // FIXME 添加删除缓存后，导致缓存始终无法存下来
           // console.log('[ServiceWorker] Removing old cache', key);
           // return caches.delete(key);
         }

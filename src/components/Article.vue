@@ -23,6 +23,13 @@ export default {
     this.$nextTick(() => {
       this.addCss(this.css);
       document.querySelector('.article .img-place-holder').style = `background-image: url(${this.image})`;
+      
+      // img http to https
+      const $img = document.querySelectorAll('.article img');
+      $img.forEach((img) => {
+        const src = img.getAttribute('src');
+        if (src.indexOf('http:') > -1) img.setAttribute('src', src.replace('http:', 'https:'));
+      });
     });
   },
   methods: {

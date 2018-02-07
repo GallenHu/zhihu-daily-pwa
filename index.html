@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="referrer" content="never">
     <title>知乎日报 PWA版</title>
-    <script src="static/fiexible.js"></script>
+    <script src="./static/fiexible.js"></script>
     <style>
       * {
         box-sizing: border-box;
@@ -26,7 +26,7 @@
         background-color: #fafafa;
       }
 
-      ul { 
+      ul {
         margin: 0;
         padding: 0;
         list-style: none;
@@ -37,5 +37,16 @@
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+      window.addEventListener('load', function() {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker
+            .register('./static/service-worker.js')
+            .then(function() {
+              console.log('Service Worker Registered');
+            });
+        }
+      });
+    </script>
   </body>
 </html>

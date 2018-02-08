@@ -12,4 +12,7 @@ export default {
   getContentById(id) {
     return axios.get(`${HOST}/api/v1/contents/${id}`);
   },
+  getThemeContentById(id) {
+    return axios.get(`${HOST}/api/v1/themes/${id}`);
+  },
 };

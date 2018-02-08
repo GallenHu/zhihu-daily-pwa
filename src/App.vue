@@ -12,8 +12,8 @@
           <span><img src="./assets/logo.png" alt="Avatar"></span>
         </div>
         <ul>
-          <li><span>首页</span></li>
-          <li v-for="(menu, index) in menuList" :key="index">
+          <li @click="changeToTheme({ id: 0 })"><span>首页</span></li>
+          <li v-for="(menu, index) in menuList" :key="index" @click="changeToTheme(menu)">
             <span>{{ menu.name }}</span>
           </li>
         </ul>
@@ -27,6 +27,7 @@
 
 <script>
 import api from './api/index';
+import eventBus from './utils/eventBus';
 
 export default {
   name: 'App',
@@ -60,6 +61,9 @@ export default {
       api.getThemes().then((res) => {
         this.menuList = res.data.THEMES && res.data.THEMES.others;
       });
+    },
+    changeToTheme(menu) {
+      eventBus.$emit('changeToTheme', menu.id);
     },
   },
 };

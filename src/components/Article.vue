@@ -21,9 +21,10 @@ export default {
   },
   updated() { // fixme
     this.$nextTick(() => {
+      const $headerImg = document.querySelector('.article .img-place-holder');
       this.addCss(this.css);
-      document.querySelector('.article .img-place-holder').style = `background-image: url(${this.image})`;
-      
+      if ($headerImg) $headerImg.style = `background-image: url(${this.image})`;
+
       // img http to https
       const $img = document.querySelectorAll('.article img');
       $img.forEach((img) => {
@@ -47,7 +48,7 @@ export default {
               // console.log(json);
               this.css = json.CONTENTS.css[0];
               this.image = json.CONTENTS.image;
-              this.image = `https://images.weserv.nl/?url=${this.image.replace('https://', '')}`;
+              if (this.image) this.image = `https://images.weserv.nl/?url=${this.image.replace('https://', '')}`;
               this.body = json.CONTENTS.body;
             });
           }
@@ -63,7 +64,7 @@ export default {
          */
         this.css = res.data.CONTENTS && res.data.CONTENTS.css[0];
         this.image = res.data.CONTENTS && res.data.CONTENTS.image;
-        this.image = `https://images.weserv.nl/?url=${this.image.replace('https://', '')}`;
+        if (this.image) this.image = `https://images.weserv.nl/?url=${this.image.replace('https://', '')}`;
         this.body = res.data.CONTENTS && res.data.CONTENTS.body;
       }).catch((err) => {
         console.log(err);

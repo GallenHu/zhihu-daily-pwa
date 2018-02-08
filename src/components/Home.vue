@@ -1,23 +1,28 @@
 <template>
   <div class="article">
-    <div class="article-card" v-for="article in list" :key="article.id" @click="go(article.id)">
-      <span><img :src="article.images[0]" :alt="article.title"></span>
-      <p>{{ article.title }}</p>
-    </div>
+    <article-card v-for="article in list" :key="article.id" :article="article" />>
   </div>
 </template>
 
 <script>
 import api from '../api/index';
+import ArticleCard from './ArticleCard';
+import eventBus from '../utils/eventBus';
 
 export default {
   name: 'Home',
+  components: { 'article-card': ArticleCard },
   data() {
     return {
       date: '',
       list: [],
       isHome: true,
     };
+  },
+  created() {
+    eventBus.$on('changeToTheme', (themeId) => {
+      this.fetchThemeContentById(themeId);
+    });
   },
   beforeMount() {
     this.fetchArticles();
@@ -27,11 +32,11 @@ export default {
       const url = 'https://zhihu-daily.leanapp.cn/api/v1/last-stories';
 
       if ('caches' in window) {
-        caches.match(url).then((res) => {
+        caches.match(url).then((response) => {
           console.log(`[Cache] matched with: ${url}`);
 
-          if (res) {
-            res.json().then((json) => {
+          if (response) {
+            response.json().then((json) => {
               // console.log('====================================');
               // console.log(json);
               // console.log('====================================');
@@ -50,9 +55,10 @@ export default {
         this.list = res.data.STORIES && res.data.STORIES.stories;
       });
     },
-    go(id) {
-      this.$router.push({
-        path: `article/${id}`,
+    fetchThemeContentById(id) {
+      if (Number(id) === 0) return this.fetchArticles(); // homepage
+      return api.getThemeContentById(id).then((res) => {
+        this.list = res.data.THEMEDES && res.data.THEMEDES.stories;
       });
     },
   },
@@ -64,27 +70,5 @@ export default {
   position: absolute;
   z-index: 1;
   overflow-y: auto;
-}
-.article-card {
-  display: flex;
-  align-items: center;
-  width: 96%;
-  margin: .2rem auto 0;
-  min-height: 1.68rem;
-  background: #fff;
-  padding: .35rem;
-  border-radius: .133rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.19);
-  cursor: pointer;
-}
-.article-card img {
-  display: block;
-  width: 1.867rem;
-  height: 1.867rem;
-}
-.article-card p {
-  margin-left: .2rem;
-  font-size: .45rem;
-  color: #333;
 }
 </style>

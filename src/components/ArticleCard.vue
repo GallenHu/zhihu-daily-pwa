@@ -1,6 +1,6 @@
 <template>
   <div class="article-card" @click="go(article.id)">
-    <span v-if="article.images"><img :src="article.images[0]" :alt="article.title"></span>
+    <span v-if="article.images"><img :src="article.images[0].replace('http:', 'https:')" :alt="article.title"></span>
     <p>{{ article.title }}</p>
   </div>
 </template>
